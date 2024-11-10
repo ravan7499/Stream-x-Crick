@@ -3,67 +3,58 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Stream X Crick</title>
-    <link href="https://vjs.zencdn.net/7.20.3/video-js.css" rel="stylesheet" />
-    <link rel="stylesheet" href="styles.css">
+    <link href="https://vjs.zencdn.net/8.16.1/video-js.css" rel="stylesheet" />
+    <title>STREAM X CRICK LINK</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            color: #333;
-            margin: 0;
-            padding: 20px;
-            text-align: center;
-        }
-
-        .container {
-            max-width: 800px;
-            margin: auto;
-            background: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        h1 {
-            color: #007bff;
-        }
-
-        .telegram-link {
-            display: inline-block;
-            margin-top: 20px;
-            padding: 10px 20px;
-            background-color: #0088cc;
-            color: white;
-            border-radius: 5px;
-            text-decoration: none;
-            transition: background-color 0.3s;
-        }
-
-        .telegram-link:hover {
-            background-color: #005f8a;
+        /* Optional: Custom styles for the player */
+        #my-video {
+            margin: 20px auto;
+            display: block;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Stream X Crick</h1>
-        <video
-            id="liveStream"
-            class="video-js"
-            controls
-            preload="auto"
-            width="640"
-            height="360"
-            data-setup="{}"
-        >
-            <source src="https://prod-sports-hin-gm.jiocinema.com/hls/live/2100326/fhd__akamai__iosmob__avc__ssaispot__indvssa__hin__m1__081124__dbeedb71-c6de-484c-8b7e-51cbb61645b4/master.m3u8" type="application/x-mpegURL" />
-        </video>
-        <a href="https://t.me/streamxcrick" class="telegram-link" target="_blank">Join Telegram Channel</a>
-    </div>
+    <video
+        id="my-video"
+        class="video-js vjs-big-play-centered"
+        controls
+        preload="auto"
+        width="640"
+        height="264"
+        poster="path/to/your/poster.jpg"
+        data-setup='{}'
+    >
+        <!-- HLS Source -->
+        <source src="https://prod-sports-hin-cf.jiocinema.com/hls/live/2100324/uhd__akamai__ctv__avc__ssaispot__indvssa__hin__m1__101124__5d882b6b-a27f-456c-bec2-abd8ed895cf2/master.m3u8" type="application/x-mpegURL" />
+
+        <p class="vjs-no-js">
+            To view this video please enable JavaScript, and consider upgrading to a
+            web browser that
+            <a href="https://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>.
+        </p>
+    </video>
     <script>if(confirm("Join Our Telegram Channel @streamxcrick")) { window.location.href = "https://t.me/streamxcrick" }
     </script>
-    <script src="https://vjs.zencdn.net/7.20.3/video.min.js"></script>
-    <script src="script.js"></script>
+    <script src="https://vjs.zencdn.net/8.16.1/video.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/videojs-hls-quality-selector@latest/dist/videojs-hls-quality-selector.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/videojs-hls-quality-selector@latest/dist/videojs-hls-quality-selector.css" />
+
+    <script>
+        // Initialize the Video.js player
+        var player = videojs('my-video', {
+            controls: true,
+            autoplay: false,
+            preload: 'auto',
+            fluid: true // Makes the player responsive
+        });
+
+        // Add the quality selector plugin
+        player.hlsQualitySelector();
+
+        // Optional: Add event listeners for player events
+        player.on('error', function() {
+            console.error('Error occurred:', player.error());
+        });
+    </script>
 </body>
 </html>
